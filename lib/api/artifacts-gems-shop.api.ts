@@ -1,5 +1,14 @@
-import { ArtifactsHttpClient } from "../http-client/artifacts.http-client";
-import { BuyCustomDesignApiBody, BuyCustomDesignApiResult, BuySkinApiBody, BuySkinApiResult, BuySpawnEventApiBody, BuySpawnEventApiResult, BuySubscriptionApiResult, GetCatalogApiResult } from "./types/api-schema-bindings.types";
+import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
+import {
+  BuyCustomDesignApiBody,
+  BuyCustomDesignApiResult,
+  BuySkinApiBody,
+  BuySkinApiResult,
+  BuySpawnEventApiBody,
+  BuySpawnEventApiResult,
+  BuySubscriptionApiResult,
+  GetCatalogApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsGemsShopApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}

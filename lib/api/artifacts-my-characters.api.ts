@@ -269,7 +269,7 @@ export class ArtifactsMyCharactersApi {
     Items will be delivered to your pending items when the order is filled. */
   public createGrandExchangeBuyOrder(
     name: string,
-    body: CreateGrandExchangeBuyOrderApiBody
+    body: CreateGrandExchangeBuyOrderApiBody,
   ): Promise<CreateGrandExchangeBuyOrderApiResult> {
     return this.httpClient.post<CreateGrandExchangeBuyOrderApiResult>(
       `/my/${name}/action/grandexchange/create_buy_order`,
@@ -286,7 +286,7 @@ export class ArtifactsMyCharactersApi {
     The buyer will receive the items in their pending items. */
   public fillGrandExchange(
     name: string,
-    body: FillGrandExchangeApiBody
+    body: FillGrandExchangeApiBody,
   ): Promise<FillGrandExchangeApiResult> {
     return this.httpClient.post<FillGrandExchangeApiResult>(
       `/my/${name}/action/grandexchange/fill`,

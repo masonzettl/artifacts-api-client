@@ -58,13 +58,10 @@ export class ArtifactsMyAccountApi {
   public getGrandExchangeHistory(
     params: GetMyGrandExchangeHistoryApiRequest = {},
   ): Promise<GetMyGrandExchangeHistoryApiResult> {
-    return this.httpClient.get<GetMyGrandExchangeHistoryApiResult>(
-      `/my/grandexchange/history`,
-      {
-        query: params,
-        isSecure: true,
-      },
-    );
+    return this.httpClient.get<GetMyGrandExchangeHistoryApiResult>(`/my/grandexchange/history`, {
+      query: params,
+      isSecure: true,
+    });
   }
 
   /** Fetch account details. */
@@ -73,7 +70,9 @@ export class ArtifactsMyAccountApi {
   }
 
   /** Retrieve all unclaimed pending items for your account. */
-  public getPendingItems(params: GetPendingItemsApiRequest = {}): Promise<GetPendingItemsApiResult> {
+  public getPendingItems(
+    params: GetPendingItemsApiRequest = {},
+  ): Promise<GetPendingItemsApiResult> {
     return this.httpClient.get<GetPendingItemsApiResult>(`/my/pending_items`, {
       query: params,
       isSecure: true,
@@ -112,7 +111,9 @@ export class ArtifactsMyAccountApi {
 
   /** Subscribe to become a member and unlock the benefits tied to your selected plan.
    * You will receive a secure Stripe checkout URL to complete the payment. */
-  public subscribeWithStripe(body: SubscribeWithStripeApiBody): Promise<SubscribeWithStripeApiResult> {
+  public subscribeWithStripe(
+    body: SubscribeWithStripeApiBody,
+  ): Promise<SubscribeWithStripeApiResult> {
     return this.httpClient.post<SubscribeWithStripeApiResult>(`/my/subscribe/stripe`, {
       body,
       isSecure: true,

@@ -1,5 +1,8 @@
-import { ArtifactsHttpClient } from "../http-client/artifacts.http-client";
-import { AskGameAssistantApiBody, AskGameAssistantApiResult } from "./types/api-schema-bindings.types";
+import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
+import {
+  AskGameAssistantApiBody,
+  AskGameAssistantApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsGameAssistantApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}

@@ -1,5 +1,9 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { GetAllSkinsApiQuery, GetAllSkinsApiResult, GetSkinApiResult } from './types/api-schema-bindings.types';
+import {
+  GetAllSkinsApiQuery,
+  GetAllSkinsApiResult,
+  GetSkinApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsSkinsApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}

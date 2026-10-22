@@ -19,9 +19,10 @@
     "ts-check": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 --ext .ts lib",
     "format": "prettier --log-level warn --write lib",
-    "update:schema": "npm run generate:schema && npm run format:schema",
+    "update:schema": "npm run generate:schema && npm run format:schema && npm run generate:schema-mapping",
     "format:schema": "prettier --log-level warn --write lib/api/types/api-schema.types.ts",
-    "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts"
+    "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts",
+    "generate:schema-mapping": "node scripts/generate-schema-mapping.mjs && prettier --log-level warn --write lib/api/types/mapping.ts"
   },
   "author": "Kirill Gerasimenko <siranweb.public@tuta.io>",
   "license": "MIT",
@@ -32,7 +33,7 @@
     "dist",
     "README.md",
     "LICENSE.md",
-    "!eslint.config.js"
+    "!eslint.config.mjs"
   ],
   "devDependencies": {
     "@eslint/config-array": "^0.21.1",

@@ -1,0 +1,304 @@
+import type { components } from './api-schema.types';
+
+export type AccessSchema = components['schemas']['AccessSchema'];
+export type AccountAchievementObjectiveSchema =
+  components['schemas']['AccountAchievementObjectiveSchema'];
+export type AccountAchievementSchema = components['schemas']['AccountAchievementSchema'];
+export type AccountDetails = components['schemas']['AccountDetails'];
+export type AccountDetailsSchema = components['schemas']['AccountDetailsSchema'];
+export type AccountLeaderboardSchema = components['schemas']['AccountLeaderboardSchema'];
+export type AccountLeaderboardType = components['schemas']['AccountLeaderboardType'];
+export type AccountStatus = components['schemas']['AccountStatus'];
+export type AchievementObjectiveSchema = components['schemas']['AchievementObjectiveSchema'];
+export type AchievementResponseSchema = components['schemas']['AchievementResponseSchema'];
+export type AchievementRewardsSchema = components['schemas']['AchievementRewardsSchema'];
+export type AchievementSchema = components['schemas']['AchievementSchema'];
+export type AchievementType = components['schemas']['AchievementType'];
+export type ActionType = components['schemas']['ActionType'];
+export type ActiveCharacterSchema = components['schemas']['ActiveCharacterSchema'];
+export type ActiveEventResponseSchema = components['schemas']['ActiveEventResponseSchema'];
+export type ActiveEventSchema = components['schemas']['ActiveEventSchema'];
+export type AddAccountSchema = components['schemas']['AddAccountSchema'];
+export type AddCharacterSchema = components['schemas']['AddCharacterSchema'];
+export type AssistantAnswerDataSchema = components['schemas']['AssistantAnswerDataSchema'];
+export type AssistantAnswerSchema = components['schemas']['AssistantAnswerSchema'];
+export type AssistantQuestionSchema = components['schemas']['AssistantQuestionSchema'];
+export type BadgeResponseSchema = components['schemas']['BadgeResponseSchema'];
+export type BadgeSchema = components['schemas']['BadgeSchema'];
+export type BankExtensionSchema = components['schemas']['BankExtensionSchema'];
+export type BankExtensionTransactionResponseSchema =
+  components['schemas']['BankExtensionTransactionResponseSchema'];
+export type BankExtensionTransactionSchema =
+  components['schemas']['BankExtensionTransactionSchema'];
+export type BankGoldTransactionResponseSchema =
+  components['schemas']['BankGoldTransactionResponseSchema'];
+export type BankGoldTransactionSchema = components['schemas']['BankGoldTransactionSchema'];
+export type BankItemTransactionResponseSchema =
+  components['schemas']['BankItemTransactionResponseSchema'];
+export type BankItemTransactionSchema = components['schemas']['BankItemTransactionSchema'];
+export type BankResponseSchema = components['schemas']['BankResponseSchema'];
+export type BankSchema = components['schemas']['BankSchema'];
+export type BuyCustomDesignRequestSchema = components['schemas']['BuyCustomDesignRequestSchema'];
+export type BuySkinRequestSchema = components['schemas']['BuySkinRequestSchema'];
+export type BuySkinResponseDataSchema = components['schemas']['BuySkinResponseDataSchema'];
+export type BuySkinResponseSchema = components['schemas']['BuySkinResponseSchema'];
+export type ChangeEmailSchema = components['schemas']['ChangeEmailSchema'];
+export type ChangePasswordSchema = components['schemas']['ChangePasswordSchema'];
+export type ChangeSkinCharacterDataSchema = components['schemas']['ChangeSkinCharacterDataSchema'];
+export type ChangeSkinCharacterSchema = components['schemas']['ChangeSkinCharacterSchema'];
+export type ChangeSkinResponseSchema = components['schemas']['ChangeSkinResponseSchema'];
+export type CharacterFightDataSchema = components['schemas']['CharacterFightDataSchema'];
+export type CharacterFightResponseSchema = components['schemas']['CharacterFightResponseSchema'];
+export type CharacterFightSchema = components['schemas']['CharacterFightSchema'];
+export type CharacterLeaderboardSchema = components['schemas']['CharacterLeaderboardSchema'];
+export type CharacterLeaderboardType = components['schemas']['CharacterLeaderboardType'];
+export type CharacterMovementDataSchema = components['schemas']['CharacterMovementDataSchema'];
+export type CharacterMovementResponseSchema =
+  components['schemas']['CharacterMovementResponseSchema'];
+export type CharacterMultiFightResultSchema =
+  components['schemas']['CharacterMultiFightResultSchema'];
+export type CharacterResponseSchema = components['schemas']['CharacterResponseSchema'];
+export type CharacterRestDataSchema = components['schemas']['CharacterRestDataSchema'];
+export type CharacterRestResponseSchema = components['schemas']['CharacterRestResponseSchema'];
+export type CharacterSchema = components['schemas']['CharacterSchema'];
+export type CharacterStatsResponseSchema = components['schemas']['CharacterStatsResponseSchema'];
+export type CharacterStatsSchema = components['schemas']['CharacterStatsSchema'];
+export type CharacterTransitionDataSchema = components['schemas']['CharacterTransitionDataSchema'];
+export type CharacterTransitionResponseSchema =
+  components['schemas']['CharacterTransitionResponseSchema'];
+export type CharactersListSchema = components['schemas']['CharactersListSchema'];
+export type CheckoutResponseSchema = components['schemas']['CheckoutResponseSchema'];
+export type CheckoutResponseWrapperSchema = components['schemas']['CheckoutResponseWrapperSchema'];
+export type ClaimPendingItemDataSchema = components['schemas']['ClaimPendingItemDataSchema'];
+export type ClaimPendingItemResponseSchema =
+  components['schemas']['ClaimPendingItemResponseSchema'];
+export type CombatResultSchema = components['schemas']['CombatResultSchema'];
+export type CombatSimulationDataSchema = components['schemas']['CombatSimulationDataSchema'];
+export type CombatSimulationRequestSchema = components['schemas']['CombatSimulationRequestSchema'];
+export type CombatSimulationResponseSchema =
+  components['schemas']['CombatSimulationResponseSchema'];
+export type ConditionOperator = components['schemas']['ConditionOperator'];
+export type ConditionSchema = components['schemas']['ConditionSchema'];
+export type CooldownSchema = components['schemas']['CooldownSchema'];
+export type CraftSchema = components['schemas']['CraftSchema'];
+export type CraftSkill = components['schemas']['CraftSkill'];
+export type CraftingSchema = components['schemas']['CraftingSchema'];
+export type DataPage_AccountAchievementSchema_ =
+  components['schemas']['DataPage_AccountAchievementSchema_'];
+export type DataPage_AccountLeaderboardSchema_ =
+  components['schemas']['DataPage_AccountLeaderboardSchema_'];
+export type DataPage_ActiveCharacterSchema_ =
+  components['schemas']['DataPage_ActiveCharacterSchema_'];
+export type DataPage_CharacterLeaderboardSchema_ =
+  components['schemas']['DataPage_CharacterLeaderboardSchema_'];
+export type DataPage_GEOrderHistorySchema_ =
+  components['schemas']['DataPage_GEOrderHistorySchema_'];
+export type DataPage_GEOrderSchema_ = components['schemas']['DataPage_GEOrderSchema_'];
+export type DataPage_LogSchema_ = components['schemas']['DataPage_LogSchema_'];
+export type DataPage_PendingItemSchema_ = components['schemas']['DataPage_PendingItemSchema_'];
+export type DataPage_RaidLeaderboardEntrySchema_ =
+  components['schemas']['DataPage_RaidLeaderboardEntrySchema_'];
+export type DataPage_SimpleItemSchema_ = components['schemas']['DataPage_SimpleItemSchema_'];
+export type DeleteCharacterSchema = components['schemas']['DeleteCharacterSchema'];
+export type DeleteItemResponseSchema = components['schemas']['DeleteItemResponseSchema'];
+export type DeleteItemSchema = components['schemas']['DeleteItemSchema'];
+export type DepositWithdrawGoldSchema = components['schemas']['DepositWithdrawGoldSchema'];
+export type DestinationSchema = components['schemas']['DestinationSchema'];
+export type DropRateSchema = components['schemas']['DropRateSchema'];
+export type DropSchema = components['schemas']['DropSchema'];
+export type EffectResponseSchema = components['schemas']['EffectResponseSchema'];
+export type EffectSchema = components['schemas']['EffectSchema'];
+export type EffectSubtype = components['schemas']['EffectSubtype'];
+export type EffectType = components['schemas']['EffectType'];
+export type EquipSchema = components['schemas']['EquipSchema'];
+export type EquipmentItemSchema = components['schemas']['EquipmentItemSchema'];
+export type EquipmentResponseSchema = components['schemas']['EquipmentResponseSchema'];
+export type EquipmentTransactionSchema = components['schemas']['EquipmentTransactionSchema'];
+export type EventContentSchema = components['schemas']['EventContentSchema'];
+export type EventMapSchema = components['schemas']['EventMapSchema'];
+export type EventSchema = components['schemas']['EventSchema'];
+export type FakeCharacterSchema = components['schemas']['FakeCharacterSchema'];
+export type FightRequestSchema = components['schemas']['FightRequestSchema'];
+export type FightResult = components['schemas']['FightResult'];
+export type GEBuyOrderCreationSchema = components['schemas']['GEBuyOrderCreationSchema'];
+export type GEBuyOrderSchema = components['schemas']['GEBuyOrderSchema'];
+export type GECancelOrderSchema = components['schemas']['GECancelOrderSchema'];
+export type GECreateOrderTransactionResponseSchema =
+  components['schemas']['GECreateOrderTransactionResponseSchema'];
+export type GEFillBuyOrderSchema = components['schemas']['GEFillBuyOrderSchema'];
+export type GEOrderCreatedSchema = components['schemas']['GEOrderCreatedSchema'];
+export type GEOrderCreationSchema = components['schemas']['GEOrderCreationSchema'];
+export type GEOrderHistorySchema = components['schemas']['GEOrderHistorySchema'];
+export type GEOrderResponseSchema = components['schemas']['GEOrderResponseSchema'];
+export type GEOrderSchema = components['schemas']['GEOrderSchema'];
+export type GEOrderTransactionSchema = components['schemas']['GEOrderTransactionSchema'];
+export type GEOrderType = components['schemas']['GEOrderType'];
+export type GETransactionListSchema = components['schemas']['GETransactionListSchema'];
+export type GETransactionResponseSchema = components['schemas']['GETransactionResponseSchema'];
+export type GETransactionSchema = components['schemas']['GETransactionSchema'];
+export type GatheringSkill = components['schemas']['GatheringSkill'];
+export type GemShopCatalogDataSchema = components['schemas']['GemShopCatalogDataSchema'];
+export type GemShopCatalogResponseSchema = components['schemas']['GemShopCatalogResponseSchema'];
+export type GemShopCustomDesignCatalogItemSchema =
+  components['schemas']['GemShopCustomDesignCatalogItemSchema'];
+export type GemShopCustomDesignPurchaseResponseDataSchema =
+  components['schemas']['GemShopCustomDesignPurchaseResponseDataSchema'];
+export type GemShopCustomDesignPurchaseResponseSchema =
+  components['schemas']['GemShopCustomDesignPurchaseResponseSchema'];
+export type GemShopSkinCatalogItemSchema = components['schemas']['GemShopSkinCatalogItemSchema'];
+export type GemShopSpawnEventCatalogItemSchema =
+  components['schemas']['GemShopSpawnEventCatalogItemSchema'];
+export type GemShopSubscriptionCatalogItemSchema =
+  components['schemas']['GemShopSubscriptionCatalogItemSchema'];
+export type GemShopSubscriptionResponseDataSchema =
+  components['schemas']['GemShopSubscriptionResponseDataSchema'];
+export type GemShopSubscriptionResponseSchema =
+  components['schemas']['GemShopSubscriptionResponseSchema'];
+export type GemTransactionListResponseSchema =
+  components['schemas']['GemTransactionListResponseSchema'];
+export type GemTransactionSchema = components['schemas']['GemTransactionSchema'];
+export type GiveGoldDataSchema = components['schemas']['GiveGoldDataSchema'];
+export type GiveGoldResponseSchema = components['schemas']['GiveGoldResponseSchema'];
+export type GiveGoldSchema = components['schemas']['GiveGoldSchema'];
+export type GiveItemDataSchema = components['schemas']['GiveItemDataSchema'];
+export type GiveItemResponseSchema = components['schemas']['GiveItemResponseSchema'];
+export type GiveItemsSchema = components['schemas']['GiveItemsSchema'];
+export type GoldSchema = components['schemas']['GoldSchema'];
+export type HTTPValidationError = components['schemas']['HTTPValidationError'];
+export type InteractionSchema = components['schemas']['InteractionSchema'];
+export type InventorySlotSchema = components['schemas']['InventorySlotSchema'];
+export type ItemResponseSchema = components['schemas']['ItemResponseSchema'];
+export type ItemSchema = components['schemas']['ItemSchema'];
+export type ItemSlot = components['schemas']['ItemSlot'];
+export type ItemType = components['schemas']['ItemType'];
+export type LogSchema = components['schemas']['LogSchema'];
+export type LogType = components['schemas']['LogType'];
+export type MapAccessType = components['schemas']['MapAccessType'];
+export type MapContentSchema = components['schemas']['MapContentSchema'];
+export type MapContentType = components['schemas']['MapContentType'];
+export type MapLayer = components['schemas']['MapLayer'];
+export type MapResponseSchema = components['schemas']['MapResponseSchema'];
+export type MapSchema = components['schemas']['MapSchema'];
+export type MemberTokenSubscriptionResponseDataSchema =
+  components['schemas']['MemberTokenSubscriptionResponseDataSchema'];
+export type MemberTokenSubscriptionResponseSchema =
+  components['schemas']['MemberTokenSubscriptionResponseSchema'];
+export type MonsterResponseSchema = components['schemas']['MonsterResponseSchema'];
+export type MonsterSchema = components['schemas']['MonsterSchema'];
+export type MonsterType = components['schemas']['MonsterType'];
+export type MyAccountDetails = components['schemas']['MyAccountDetails'];
+export type MyAccountDetailsSchema = components['schemas']['MyAccountDetailsSchema'];
+export type MyCharactersListSchema = components['schemas']['MyCharactersListSchema'];
+export type NPCItemSchema = components['schemas']['NPCItemSchema'];
+export type NPCResponseSchema = components['schemas']['NPCResponseSchema'];
+export type NPCSchema = components['schemas']['NPCSchema'];
+export type NPCType = components['schemas']['NPCType'];
+export type NpcItemTransactionSchema = components['schemas']['NpcItemTransactionSchema'];
+export type NpcMerchantBuySchema = components['schemas']['NpcMerchantBuySchema'];
+export type NpcMerchantTransactionResponseSchema =
+  components['schemas']['NpcMerchantTransactionResponseSchema'];
+export type NpcMerchantTransactionSchema = components['schemas']['NpcMerchantTransactionSchema'];
+export type PasswordResetConfirmSchema = components['schemas']['PasswordResetConfirmSchema'];
+export type PasswordResetRequestSchema = components['schemas']['PasswordResetRequestSchema'];
+export type PasswordResetResponseSchema = components['schemas']['PasswordResetResponseSchema'];
+export type PendingItemSchema = components['schemas']['PendingItemSchema'];
+export type PendingItemSource = components['schemas']['PendingItemSource'];
+export type PurchaseGemsRequestSchema = components['schemas']['PurchaseGemsRequestSchema'];
+export type PurchaseHistoryListResponseSchema =
+  components['schemas']['PurchaseHistoryListResponseSchema'];
+export type PurchaseHistorySchema = components['schemas']['PurchaseHistorySchema'];
+export type PurchaseType = components['schemas']['PurchaseType'];
+export type RaidDamageRewardSchema = components['schemas']['RaidDamageRewardSchema'];
+export type RaidInstanceResult = components['schemas']['RaidInstanceResult'];
+export type RaidInstanceSchema = components['schemas']['RaidInstanceSchema'];
+export type RaidLeaderboardEntrySchema = components['schemas']['RaidLeaderboardEntrySchema'];
+export type RaidRankRewardSchema = components['schemas']['RaidRankRewardSchema'];
+export type RaidResponseSchema = components['schemas']['RaidResponseSchema'];
+export type RaidRewardsSchema = components['schemas']['RaidRewardsSchema'];
+export type RaidScheduleSchema = components['schemas']['RaidScheduleSchema'];
+export type RaidSchema = components['schemas']['RaidSchema'];
+export type RaidStatus = components['schemas']['RaidStatus'];
+export type RaidWeekday = components['schemas']['RaidWeekday'];
+export type RateLimitSchema = components['schemas']['RateLimitSchema'];
+export type RateLimitScopeSchema = components['schemas']['RateLimitScopeSchema'];
+export type RateLimitWindowSchema = components['schemas']['RateLimitWindowSchema'];
+export type RateLimitsDataSchema = components['schemas']['RateLimitsDataSchema'];
+export type RateLimitsSchema = components['schemas']['RateLimitsSchema'];
+export type RecyclingDataSchema = components['schemas']['RecyclingDataSchema'];
+export type RecyclingItemsSchema = components['schemas']['RecyclingItemsSchema'];
+export type RecyclingResponseSchema = components['schemas']['RecyclingResponseSchema'];
+export type RecyclingSchema = components['schemas']['RecyclingSchema'];
+export type RenameCharacterDataSchema = components['schemas']['RenameCharacterDataSchema'];
+export type RenameCharacterSchema = components['schemas']['RenameCharacterSchema'];
+export type RenameResponseSchema = components['schemas']['RenameResponseSchema'];
+export type ResourceResponseSchema = components['schemas']['ResourceResponseSchema'];
+export type ResourceSchema = components['schemas']['ResourceSchema'];
+export type ResponseSchema = components['schemas']['ResponseSchema'];
+export type RewardDataResponseSchema = components['schemas']['RewardDataResponseSchema'];
+export type RewardDataSchema = components['schemas']['RewardDataSchema'];
+export type RewardItemSchema = components['schemas']['RewardItemSchema'];
+export type RewardResponseSchema = components['schemas']['RewardResponseSchema'];
+export type RewardType = components['schemas']['RewardType'];
+export type RewardsSchema = components['schemas']['RewardsSchema'];
+export type SeasonRewardSchema = components['schemas']['SeasonRewardSchema'];
+export type SeasonSchema = components['schemas']['SeasonSchema'];
+export type SimpleEffectSchema = components['schemas']['SimpleEffectSchema'];
+export type SimpleItemSchema = components['schemas']['SimpleItemSchema'];
+export type SimpleNPCItemSchema = components['schemas']['SimpleNPCItemSchema'];
+export type Skill = components['schemas']['Skill'];
+export type SkillDataSchema = components['schemas']['SkillDataSchema'];
+export type SkillInfoSchema = components['schemas']['SkillInfoSchema'];
+export type SkillResponseSchema = components['schemas']['SkillResponseSchema'];
+export type SkinResponseSchema = components['schemas']['SkinResponseSchema'];
+export type SkinSchema = components['schemas']['SkinSchema'];
+export type SpawnEventRequestSchema = components['schemas']['SpawnEventRequestSchema'];
+export type StaticDataPage_AchievementSchema_ =
+  components['schemas']['StaticDataPage_AchievementSchema_'];
+export type StaticDataPage_ActiveEventSchema_ =
+  components['schemas']['StaticDataPage_ActiveEventSchema_'];
+export type StaticDataPage_BadgeSchema_ = components['schemas']['StaticDataPage_BadgeSchema_'];
+export type StaticDataPage_DropRateSchema_ =
+  components['schemas']['StaticDataPage_DropRateSchema_'];
+export type StaticDataPage_EffectSchema_ = components['schemas']['StaticDataPage_EffectSchema_'];
+export type StaticDataPage_EventSchema_ = components['schemas']['StaticDataPage_EventSchema_'];
+export type StaticDataPage_ItemSchema_ = components['schemas']['StaticDataPage_ItemSchema_'];
+export type StaticDataPage_MapSchema_ = components['schemas']['StaticDataPage_MapSchema_'];
+export type StaticDataPage_MonsterSchema_ = components['schemas']['StaticDataPage_MonsterSchema_'];
+export type StaticDataPage_NPCItemSchema_ = components['schemas']['StaticDataPage_NPCItemSchema_'];
+export type StaticDataPage_NPCSchema_ = components['schemas']['StaticDataPage_NPCSchema_'];
+export type StaticDataPage_RaidSchema_ = components['schemas']['StaticDataPage_RaidSchema_'];
+export type StaticDataPage_ResourceSchema_ =
+  components['schemas']['StaticDataPage_ResourceSchema_'];
+export type StaticDataPage_SeasonRewardSchema_ =
+  components['schemas']['StaticDataPage_SeasonRewardSchema_'];
+export type StaticDataPage_SkinSchema_ = components['schemas']['StaticDataPage_SkinSchema_'];
+export type StaticDataPage_TaskFullSchema_ =
+  components['schemas']['StaticDataPage_TaskFullSchema_'];
+export type StatusResponseSchema = components['schemas']['StatusResponseSchema'];
+export type StatusSchema = components['schemas']['StatusSchema'];
+export type StatusSeasonRewardSchema = components['schemas']['StatusSeasonRewardSchema'];
+export type StorageEffectSchema = components['schemas']['StorageEffectSchema'];
+export type StripeSubscriptionPlan = components['schemas']['StripeSubscriptionPlan'];
+export type SubscribeRequestSchema = components['schemas']['SubscribeRequestSchema'];
+export type SubscriptionPlan = components['schemas']['SubscriptionPlan'];
+export type SubscriptionResponseSchema = components['schemas']['SubscriptionResponseSchema'];
+export type SubscriptionSchema = components['schemas']['SubscriptionSchema'];
+export type TaskCancelledResponseSchema = components['schemas']['TaskCancelledResponseSchema'];
+export type TaskCancelledSchema = components['schemas']['TaskCancelledSchema'];
+export type TaskDataSchema = components['schemas']['TaskDataSchema'];
+export type TaskFullResponseSchema = components['schemas']['TaskFullResponseSchema'];
+export type TaskFullSchema = components['schemas']['TaskFullSchema'];
+export type TaskResponseSchema = components['schemas']['TaskResponseSchema'];
+export type TaskSchema = components['schemas']['TaskSchema'];
+export type TaskTradeDataSchema = components['schemas']['TaskTradeDataSchema'];
+export type TaskTradeResponseSchema = components['schemas']['TaskTradeResponseSchema'];
+export type TaskTradeSchema = components['schemas']['TaskTradeSchema'];
+export type TaskType = components['schemas']['TaskType'];
+export type TokenResponseSchema = components['schemas']['TokenResponseSchema'];
+export type TransitionSchema = components['schemas']['TransitionSchema'];
+export type UnequipSchema = components['schemas']['UnequipSchema'];
+export type UseItemResponseSchema = components['schemas']['UseItemResponseSchema'];
+export type UseItemSchema = components['schemas']['UseItemSchema'];
+export type ValidationError = components['schemas']['ValidationError'];
+export type ErrorSchema = components['schemas']['ErrorSchema'];
+export type ErrorResponseSchema = components['schemas']['ErrorResponseSchema'];

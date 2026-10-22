@@ -282,7 +282,6 @@ export type GetAllSkinsApiResult =
 export type GetSkinApiResult =
   paths['/skins/{code}']['get']['responses'][200]['content']['application/json'];
 
-
 // Season Rewards
 
 export type GetAllSeasonRewardsApiQuery = paths['/season_rewards']['get']['parameters']['query'];

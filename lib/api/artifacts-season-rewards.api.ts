@@ -1,5 +1,10 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { GetAllSeasonRewardsApiQuery, GetAllSeasonRewardsApiResult, GetSeasonRewardsByCodeApiQuery, GetSeasonRewardsByCodeApiResult } from './types/api-schema-bindings.types';
+import {
+  GetAllSeasonRewardsApiQuery,
+  GetAllSeasonRewardsApiResult,
+  GetSeasonRewardsByCodeApiQuery,
+  GetSeasonRewardsByCodeApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsSeasonRewardsApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
@@ -14,7 +19,7 @@ export class ArtifactsSeasonRewardsApi {
   /** List all season rewards matching a specific code. */
   public getByCode(
     code: string,
-    params: GetSeasonRewardsByCodeApiQuery
+    params: GetSeasonRewardsByCodeApiQuery,
   ): Promise<GetSeasonRewardsByCodeApiResult> {
     return this.httpClient.get<GetSeasonRewardsByCodeApiResult>(`/skins/${code}`, {
       query: params,
