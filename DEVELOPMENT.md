@@ -1,10 +1,11 @@
 # Development
 
-## Update schema
-1. Run `npm run update:schema` to generate schema and format it
+## Update schema and bindings
+1. Run `npm run update:schema` to generate schema and format it.
+2. Run `npm run generate:schema-bindings` to generate schema bindings and format it.
 
 ## Building
-1. Run `rm -rf dist` to remove `dist` directory (if exists).
+1. Run `rm -rf dist` to remove `dist` directory (if it exists).
 2. Run `npm run pre-build` to run TS check, linter and formatter.
 3. Run `npm run build` to build.
 

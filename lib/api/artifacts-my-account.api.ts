@@ -8,30 +8,30 @@ import {
   ChangePasswordApiBody,
   ChangePasswordApiResult,
   GetAccountDetailsApiResult,
-  GetBankApiResult,
+  GetBankDetailsApiResult,
   GetBankItemsApiQuery,
   GetBankItemsApiResult,
   GetMyGemsHistoryApiResult,
-  GetMyGrandExchangeHistoryApiRequest,
-  GetMyGrandExchangeHistoryApiResult,
-  GetMyGrandExchangeOrdersApiRequest,
-  GetMyGrandExchangeOrdersApiResult,
+  GetMyGeHistoryApiQuery,
+  GetMyGeHistoryApiResult,
+  GetMyGeOrdersApiQuery,
+  GetMyGeOrdersApiResult,
   GetMyPurchaseHistoryApiResult,
   GetMySubscriptionApiResult,
-  GetPendingItemsApiRequest,
+  GetPendingItemsApiQuery,
   GetPendingItemsApiResult,
   GetRateLimitsApiResult,
   SubscribeWithMemberTokenApiResult,
-  SubscribeWithStripeApiBody,
-  SubscribeWithStripeApiResult,
+  BuyStripeSubscriptionApiBody,
+  BuyStripeSubscriptionApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsMyAccountApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
   /** Fetch bank details. */
-  public getBank(): Promise<GetBankApiResult> {
-    return this.httpClient.get<GetBankApiResult>(`/my/bank`, {
+  public getBank(): Promise<GetBankDetailsApiResult> {
+    return this.httpClient.get<GetBankDetailsApiResult>(`/my/bank`, {
       isSecure: true,
     });
   }
@@ -46,9 +46,9 @@ export class ArtifactsMyAccountApi {
 
   /** Fetch your orders details (sell and buy orders). */
   public getGrandExchangeOrders(
-    params: GetMyGrandExchangeOrdersApiRequest = {},
-  ): Promise<GetMyGrandExchangeOrdersApiResult> {
-    return this.httpClient.get<GetMyGrandExchangeOrdersApiResult>(`/my/grandexchange/orders`, {
+    params: GetMyGeOrdersApiQuery = {},
+  ): Promise<GetMyGeOrdersApiResult> {
+    return this.httpClient.get<GetMyGeOrdersApiResult>(`/my/grandexchange/orders`, {
       query: params,
       isSecure: true,
     });
@@ -56,9 +56,9 @@ export class ArtifactsMyAccountApi {
 
   /** Fetch your transaction history of the last 7 days (buy and sell orders). */
   public getGrandExchangeHistory(
-    params: GetMyGrandExchangeHistoryApiRequest = {},
-  ): Promise<GetMyGrandExchangeHistoryApiResult> {
-    return this.httpClient.get<GetMyGrandExchangeHistoryApiResult>(`/my/grandexchange/history`, {
+    params: GetMyGeHistoryApiQuery = {},
+  ): Promise<GetMyGeHistoryApiResult> {
+    return this.httpClient.get<GetMyGeHistoryApiResult>(`/my/grandexchange/history`, {
       query: params,
       isSecure: true,
     });
@@ -70,9 +70,7 @@ export class ArtifactsMyAccountApi {
   }
 
   /** Retrieve all unclaimed pending items for your account. */
-  public getPendingItems(
-    params: GetPendingItemsApiRequest = {},
-  ): Promise<GetPendingItemsApiResult> {
+  public getPendingItems(params: GetPendingItemsApiQuery = {}): Promise<GetPendingItemsApiResult> {
     return this.httpClient.get<GetPendingItemsApiResult>(`/my/pending_items`, {
       query: params,
       isSecure: true,
@@ -112,9 +110,9 @@ export class ArtifactsMyAccountApi {
   /** Subscribe to become a member and unlock the benefits tied to your selected plan.
    * You will receive a secure Stripe checkout URL to complete the payment. */
   public subscribeWithStripe(
-    body: SubscribeWithStripeApiBody,
-  ): Promise<SubscribeWithStripeApiResult> {
-    return this.httpClient.post<SubscribeWithStripeApiResult>(`/my/subscribe/stripe`, {
+    body: BuyStripeSubscriptionApiBody,
+  ): Promise<BuyStripeSubscriptionApiResult> {
+    return this.httpClient.post<BuyStripeSubscriptionApiResult>(`/my/subscribe/stripe`, {
       body,
       isSecure: true,
     });

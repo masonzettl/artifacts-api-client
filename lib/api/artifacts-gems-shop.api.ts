@@ -6,7 +6,7 @@ import {
   BuySkinApiResult,
   BuySpawnEventApiBody,
   BuySpawnEventApiResult,
-  BuySubscriptionApiResult,
+  BuyGemShopSubscriptionApiResult,
   GetCatalogApiResult,
 } from './types/api-schema-bindings.types';
 
@@ -37,8 +37,8 @@ export class ArtifactsGemsShopApi {
   }
 
   /** Buy or extend membership by 30 days using gems. Unavailable while a Stripe subscription is active. */
-  public buySubscription(): Promise<BuySubscriptionApiResult> {
-    return this.httpClient.post<BuySubscriptionApiResult>(`/gems_shop/subscription`, {
+  public buySubscription(): Promise<BuyGemShopSubscriptionApiResult> {
+    return this.httpClient.post<BuyGemShopSubscriptionApiResult>(`/gems_shop/subscription`, {
       isSecure: true,
     });
   }

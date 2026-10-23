@@ -22,7 +22,7 @@
     "update:schema": "npm run generate:schema && npm run format:schema && npm run generate:schema-mapping",
     "format:schema": "prettier --log-level warn --write lib/api/types/api-schema.types.ts",
     "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts",
-    "generate:schema-mapping": "node scripts/generate-schema-mapping.mjs && prettier --log-level warn --write lib/api/types/mapping.ts"
+    "generate:schema-bindings": "node scripts/generate-schema-bindings.mjs && prettier --log-level warn --write lib/api/types/api-schema-bindings.types.ts"
   },
   "author": "Kirill Gerasimenko <siranweb.public@tuta.io>",
   "license": "MIT",
