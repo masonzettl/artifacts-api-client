@@ -1,5 +1,14 @@
-import { ArtifactsHttpClient } from "../http-client/artifacts.http-client";
-import { BuyCustomDesignApiBody, BuyCustomDesignApiResult, BuySkinApiBody, BuySkinApiResult, BuySpawnEventApiBody, BuySpawnEventApiResult, BuySubscriptionApiResult, GetCatalogApiResult } from "./types/api-schema-bindings.types";
+import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
+import {
+  BuyCustomDesignApiBody,
+  BuyCustomDesignApiResult,
+  BuySkinApiBody,
+  BuySkinApiResult,
+  BuySpawnEventApiBody,
+  BuySpawnEventApiResult,
+  BuyGemShopSubscriptionApiResult,
+  GetCatalogApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsGemsShopApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
@@ -28,8 +37,8 @@ export class ArtifactsGemsShopApi {
   }
 
   /** Buy or extend membership by 30 days using gems. Unavailable while a Stripe subscription is active. */
-  public buySubscription(): Promise<BuySubscriptionApiResult> {
-    return this.httpClient.post<BuySubscriptionApiResult>(`/gems_shop/subscription`, {
+  public buySubscription(): Promise<BuyGemShopSubscriptionApiResult> {
+    return this.httpClient.post<BuyGemShopSubscriptionApiResult>(`/gems_shop/subscription`, {
       isSecure: true,
     });
   }

@@ -1,6 +1,6 @@
 {
   "name": "artifacts-api-client",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Api client for https://artifactsmmo.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,9 +19,10 @@
     "ts-check": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 --ext .ts lib",
     "format": "prettier --log-level warn --write lib",
-    "update:schema": "npm run generate:schema && npm run format:schema",
+    "update:schema": "npm run generate:schema && npm run format:schema && npm run generate:schema-bindings",
     "format:schema": "prettier --log-level warn --write lib/api/types/api-schema.types.ts",
-    "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts"
+    "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts",
+    "generate:schema-bindings": "node scripts/generate-schema-bindings.mjs && prettier --log-level warn --write lib/api/types/api-schema-bindings.types.ts"
   },
   "author": "Kirill Gerasimenko <siranweb.public@tuta.io>",
   "license": "MIT",
@@ -32,7 +33,7 @@
     "dist",
     "README.md",
     "LICENSE.md",
-    "!eslint.config.js"
+    "!eslint.config.mjs"
   ],
   "devDependencies": {
     "@eslint/config-array": "^0.21.1",

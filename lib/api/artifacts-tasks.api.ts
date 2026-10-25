@@ -5,7 +5,7 @@ import {
   GetAllTasksRewardsApiQuery,
   GetAllTasksRewardsApiResult,
   GetTaskApiResult,
-  GetTasksRewardsApiResult,
+  GetTasksRewardApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsTasksApi {
@@ -33,7 +33,7 @@ export class ArtifactsTasksApi {
   }
 
   /** Retrieve the details of a tasks reward. */
-  public getReward(code: string): Promise<GetTasksRewardsApiResult> {
-    return this.httpClient.get<GetTasksRewardsApiResult>(`/tasks/rewards/${code}`);
+  public getReward(code: string): Promise<GetTasksRewardApiResult> {
+    return this.httpClient.get<GetTasksRewardApiResult>(`/tasks/rewards/${code}`);
   }
 }

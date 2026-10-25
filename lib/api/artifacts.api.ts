@@ -11,7 +11,7 @@ import { ArtifactsEventsApi } from './artifacts-events.api';
 import { ArtifactsGrandExchangeApi } from './artifacts-grand-exchange.api';
 import { ArtifactsAccountsApi } from './artifacts-accounts.api';
 import { ArtifactsTokenApi } from './artifacts-token.api';
-import { GetStatusApiResult } from './types/api-schema-bindings.types';
+import { GetServerDetailsApiResult } from './types/api-schema-bindings.types';
 import { ArtifactsLeaderboardApi } from './artifacts-leaderboard.api';
 import { ArtifactsAchievementsApi } from './artifacts-achievements.api';
 import { ArtifactsBadgesApi } from './artifacts-badges.api';
@@ -84,8 +84,8 @@ export class ArtifactsApi {
     return new ArtifactsApi(httpClient);
   }
 
-  public getStatus(): Promise<GetStatusApiResult> {
-    return this.httpClient.get<GetStatusApiResult>('/');
+  public getStatus(): Promise<GetServerDetailsApiResult> {
+    return this.httpClient.get<GetServerDetailsApiResult>('/');
   }
 
   public setToken(token: string): void {

@@ -1,10 +1,11 @@
 # Development
 
-## Update schema
-1. Run `npm run update:schema` to generate schema and format it
+## Update schema and bindings
+1. Run `npm run update:schema` to generate schema, format it, and generate schema bindings.
+2. Add/update/remove the appropriate methods in the artifacts api classes.
 
 ## Building
-1. Run `rm -rf dist` to remove `dist` directory (if exists).
+1. Run `rm -rf dist` to remove `dist` directory (if it exists).
 2. Run `npm run pre-build` to run TS check, linter and formatter.
 3. Run `npm run build` to build.
 
