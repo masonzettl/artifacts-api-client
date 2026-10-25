@@ -19,7 +19,7 @@
     "ts-check": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 --ext .ts lib",
     "format": "prettier --log-level warn --write lib",
-    "update:schema": "npm run generate:schema && npm run format:schema && npm run generate:schema-mapping",
+    "update:schema": "npm run generate:schema && npm run format:schema && npm run generate:schema-bindings",
     "format:schema": "prettier --log-level warn --write lib/api/types/api-schema.types.ts",
     "generate:schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts",
     "generate:schema-bindings": "node scripts/generate-schema-bindings.mjs && prettier --log-level warn --write lib/api/types/api-schema-bindings.types.ts"
