@@ -1,8 +1,8 @@
 # Development
 
 ## Update schema and bindings
-1. Run `npm run update:schema` to generate schema and format it.
-2. Run `npm run generate:schema-bindings` to generate schema bindings and format it.
+1. Run `npm run update:schema` to generate schema, format it, and generate schema bindings.
+2. Add/update/remove the appropriate methods in the artifacts api classes.
 
 ## Building
 1. Run `rm -rf dist` to remove `dist` directory (if it exists).
