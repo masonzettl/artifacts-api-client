@@ -141,7 +141,7 @@ export class ArtifactsMyCharactersApi {
   }
 
   /** Deposit golds in a bank on the character's map. */
-  public ActionDepositBankGold(
+  public depositBankGold(
     name: string,
     body: ActionDepositBankGoldApiBody,
   ): Promise<ActionDepositBankGoldApiResult> {
@@ -156,7 +156,7 @@ export class ArtifactsMyCharactersApi {
 
   /** Deposit multiple items in a bank on the character's map.
    * The cooldown will be 3 seconds multiplied by the number of different items deposited. */
-  public ActionDepositBankItem(
+  public depositBankItem(
     name: string,
     body: ActionDepositBankItemApiBody,
   ): Promise<ActionDepositBankItemApiResult> {
