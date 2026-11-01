@@ -5,6 +5,9 @@
 
 import type { components, paths } from './api-schema.types';
 
+export type AcceptOfferingDataSchema = components['schemas']['AcceptOfferingDataSchema'];
+export type AcceptOfferingRequestSchema = components['schemas']['AcceptOfferingRequestSchema'];
+export type AcceptOfferingResponseSchema = components['schemas']['AcceptOfferingResponseSchema'];
 export type AccessSchema = components['schemas']['AccessSchema'];
 export type AccountAchievementObjectiveSchema =
   components['schemas']['AccountAchievementObjectiveSchema'];
@@ -30,6 +33,8 @@ export type AssistantAnswerSchema = components['schemas']['AssistantAnswerSchema
 export type AssistantQuestionSchema = components['schemas']['AssistantQuestionSchema'];
 export type BadgeResponseSchema = components['schemas']['BadgeResponseSchema'];
 export type BadgeSchema = components['schemas']['BadgeSchema'];
+export type BankDataPage_SimpleItemSchema_ =
+  components['schemas']['BankDataPage_SimpleItemSchema_'];
 export type BankExtensionSchema = components['schemas']['BankExtensionSchema'];
 export type BankExtensionTransactionResponseSchema =
   components['schemas']['BankExtensionTransactionResponseSchema'];
@@ -66,6 +71,10 @@ export type CharacterResponseSchema = components['schemas']['CharacterResponseSc
 export type CharacterRestDataSchema = components['schemas']['CharacterRestDataSchema'];
 export type CharacterRestResponseSchema = components['schemas']['CharacterRestResponseSchema'];
 export type CharacterSchema = components['schemas']['CharacterSchema'];
+export type CharacterSeasonalOfferingsResponseSchema =
+  components['schemas']['CharacterSeasonalOfferingsResponseSchema'];
+export type CharacterSeasonalOfferingsSchema =
+  components['schemas']['CharacterSeasonalOfferingsSchema'];
 export type CharacterStatsResponseSchema = components['schemas']['CharacterStatsResponseSchema'];
 export type CharacterStatsSchema = components['schemas']['CharacterStatsSchema'];
 export type CharacterTransitionDataSchema = components['schemas']['CharacterTransitionDataSchema'];
@@ -82,12 +91,19 @@ export type CombatSimulationDataSchema = components['schemas']['CombatSimulation
 export type CombatSimulationRequestSchema = components['schemas']['CombatSimulationRequestSchema'];
 export type CombatSimulationResponseSchema =
   components['schemas']['CombatSimulationResponseSchema'];
+export type CompleteOfferingDataSchema = components['schemas']['CompleteOfferingDataSchema'];
+export type CompleteOfferingRequestSchema = components['schemas']['CompleteOfferingRequestSchema'];
+export type CompleteOfferingResponseSchema =
+  components['schemas']['CompleteOfferingResponseSchema'];
 export type ConditionOperator = components['schemas']['ConditionOperator'];
 export type ConditionSchema = components['schemas']['ConditionSchema'];
 export type CooldownSchema = components['schemas']['CooldownSchema'];
 export type CraftSchema = components['schemas']['CraftSchema'];
 export type CraftSkill = components['schemas']['CraftSkill'];
 export type CraftingSchema = components['schemas']['CraftingSchema'];
+export type DailySeasonalOfferingsResponseSchema =
+  components['schemas']['DailySeasonalOfferingsResponseSchema'];
+export type DailySeasonalOfferingsSchema = components['schemas']['DailySeasonalOfferingsSchema'];
 export type DataPage_AccountAchievementSchema_ =
   components['schemas']['DataPage_AccountAchievementSchema_'];
 export type DataPage_AccountLeaderboardSchema_ =
@@ -103,7 +119,6 @@ export type DataPage_LogSchema_ = components['schemas']['DataPage_LogSchema_'];
 export type DataPage_PendingItemSchema_ = components['schemas']['DataPage_PendingItemSchema_'];
 export type DataPage_RaidLeaderboardEntrySchema_ =
   components['schemas']['DataPage_RaidLeaderboardEntrySchema_'];
-export type DataPage_SimpleItemSchema_ = components['schemas']['DataPage_SimpleItemSchema_'];
 export type DeleteCharacterSchema = components['schemas']['DeleteCharacterSchema'];
 export type DeleteItemResponseSchema = components['schemas']['DeleteItemResponseSchema'];
 export type DeleteItemSchema = components['schemas']['DeleteItemSchema'];
@@ -203,6 +218,9 @@ export type NpcMerchantBuySchema = components['schemas']['NpcMerchantBuySchema']
 export type NpcMerchantTransactionResponseSchema =
   components['schemas']['NpcMerchantTransactionResponseSchema'];
 export type NpcMerchantTransactionSchema = components['schemas']['NpcMerchantTransactionSchema'];
+export type OfferingFavorSchema = components['schemas']['OfferingFavorSchema'];
+export type OfferingRequirementSchema = components['schemas']['OfferingRequirementSchema'];
+export type OfferingRewardSchema = components['schemas']['OfferingRewardSchema'];
 export type PasswordResetConfirmSchema = components['schemas']['PasswordResetConfirmSchema'];
 export type PasswordResetRequestSchema = components['schemas']['PasswordResetRequestSchema'];
 export type PasswordResetResponseSchema = components['schemas']['PasswordResetResponseSchema'];
@@ -247,6 +265,8 @@ export type RewardType = components['schemas']['RewardType'];
 export type RewardsSchema = components['schemas']['RewardsSchema'];
 export type SeasonRewardSchema = components['schemas']['SeasonRewardSchema'];
 export type SeasonSchema = components['schemas']['SeasonSchema'];
+export type SeasonalOfferingSchema = components['schemas']['SeasonalOfferingSchema'];
+export type SelectedOfferingSchema = components['schemas']['SelectedOfferingSchema'];
 export type SimpleEffectSchema = components['schemas']['SimpleEffectSchema'];
 export type SimpleItemSchema = components['schemas']['SimpleItemSchema'];
 export type SimpleNPCItemSchema = components['schemas']['SimpleNPCItemSchema'];
@@ -496,6 +516,18 @@ export type ActionRenameApiResult =
 export type ActionRenameApiBody = NonNullable<
   paths['/my/{name}/action/rename']['post']['requestBody']
 >['content']['application/json'];
+export type GetCharacterSeasonalOfferingsApiResult =
+  paths['/my/{name}/offerings']['get']['responses'][200]['content']['application/json'];
+export type ActionAcceptSeasonalOfferingApiResult =
+  paths['/my/{name}/action/offering/accept']['post']['responses'][200]['content']['application/json'];
+export type ActionAcceptSeasonalOfferingApiBody = NonNullable<
+  paths['/my/{name}/action/offering/accept']['post']['requestBody']
+>['content']['application/json'];
+export type ActionCompleteSeasonalOfferingApiResult =
+  paths['/my/{name}/action/offering']['post']['responses'][200]['content']['application/json'];
+export type ActionCompleteSeasonalOfferingApiBody = NonNullable<
+  paths['/my/{name}/action/offering']['post']['requestBody']
+>['content']['application/json'];
 export type GetAllCharactersLogsApiResult =
   paths['/my/logs']['get']['responses'][200]['content']['application/json'];
 export type GetAllCharactersLogsApiQuery = paths['/my/logs']['get']['parameters']['query'];
@@ -549,6 +581,8 @@ export type GetSeasonRewardsByCodeApiResult =
   paths['/season_rewards/{code}']['get']['responses'][200]['content']['application/json'];
 export type GetSeasonRewardsByCodeApiQuery =
   paths['/season_rewards/{code}']['get']['parameters']['query'];
+export type GetDailySeasonalOfferingsApiResult =
+  paths['/seasonal_offerings']['get']['responses'][200]['content']['application/json'];
 export type CreateCharacterApiResult =
   paths['/characters/create']['post']['responses'][200]['content']['application/json'];
 export type CreateCharacterApiBody = NonNullable<

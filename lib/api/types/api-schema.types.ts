@@ -1028,6 +1028,66 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/my/{name}/offerings': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Character Seasonal Offerings
+     * @description Return today's offerings and completion state for one character.
+     */
+    get: operations['get_character_seasonal_offerings_my__name__offerings_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/offering/accept': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Accept Seasonal Offering
+     * @description Accept one offering in a daily category and activate its favor.
+     */
+    post: operations['action_accept_seasonal_offering_my__name__action_offering_accept_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/offering': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Complete Seasonal Offering
+     * @description Complete a previously accepted offering and receive its XP reward.
+     */
+    post: operations['action_complete_seasonal_offering_my__name__action_offering_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/my/logs': {
     parameters: {
       query?: never;
@@ -1357,6 +1417,26 @@ export interface paths {
      * @description List all season rewards matching a specific code.
      */
     get: operations['get_season_rewards_by_code_season_rewards__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/seasonal_offerings': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Daily Seasonal Offerings
+     * @description Return the worldwide seasonal offerings available for the current UTC day.
+     */
+    get: operations['get_daily_seasonal_offerings_seasonal_offerings_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -2239,6 +2319,29 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AcceptOfferingDataSchema */
+    AcceptOfferingDataSchema: {
+      cooldown: components['schemas']['CooldownSchema'];
+      offering: components['schemas']['SeasonalOfferingSchema'];
+      /**
+       * Favor Expires At
+       * Format: date-time
+       */
+      favor_expires_at: string;
+      character: components['schemas']['CharacterSchema'];
+    };
+    /** AcceptOfferingRequestSchema */
+    AcceptOfferingRequestSchema: {
+      /**
+       * Offering Id
+       * @description Offering identifier to complete.
+       */
+      offering_id: string;
+    };
+    /** AcceptOfferingResponseSchema */
+    AcceptOfferingResponseSchema: {
+      data: components['schemas']['AcceptOfferingDataSchema'];
+    };
     /** AccessSchema */
     AccessSchema: {
       /** @description Map access type determining movement and accessibility */
@@ -2484,6 +2587,7 @@ export interface components {
       | 'crafting'
       | 'recycling'
       | 'task'
+      | 'favor'
       | 'other'
       | 'use'
       | 'npc_buy'
@@ -2525,6 +2629,7 @@ export interface components {
       | 'rename'
       | 'transition'
       | 'claim_item'
+      | 'offering'
       | 'sandbox_give_gold'
       | 'sandbox_give_item'
       | 'sandbox_give_xp'
@@ -2689,6 +2794,19 @@ export interface components {
        * @description Description of the badge.
        */
       description: string;
+    };
+    /** BankDataPage[SimpleItemSchema] */
+    BankDataPage_SimpleItemSchema_: {
+      /** Data */
+      data: components['schemas']['SimpleItemSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
     };
     /** BankExtensionSchema */
     BankExtensionSchema: {
@@ -3527,6 +3645,53 @@ export interface components {
        */
       inventory?: components['schemas']['InventorySlotSchema'][];
     };
+    /** CharacterSeasonalOfferingsResponseSchema */
+    CharacterSeasonalOfferingsResponseSchema: {
+      data: components['schemas']['CharacterSeasonalOfferingsSchema'];
+    };
+    /** CharacterSeasonalOfferingsSchema */
+    CharacterSeasonalOfferingsSchema: {
+      /**
+       * Date
+       * Format: date
+       * @description UTC date of this rotation.
+       */
+      date: string;
+      /**
+       * Expires At
+       * Format: date-time
+       * @description Next daily reset at midnight UTC.
+       */
+      expires_at: string;
+      /**
+       * Skills
+       * @description Two skills selected for this rotation.
+       */
+      skills: string[];
+      /**
+       * Xp Reward Percent
+       * @description Percentage of the current level XP requirement granted on completion.
+       * @default 25
+       */
+      xp_reward_percent: number;
+      /** Offerings */
+      offerings: components['schemas']['SeasonalOfferingSchema'][];
+      /**
+       * Selected Offerings
+       * @description Offerings accepted or completed by this character today.
+       */
+      selected_offerings: components['schemas']['SelectedOfferingSchema'][];
+      /**
+       * Completed Categories
+       * @description Categories already completed by this character today.
+       */
+      completed_categories: string[];
+      /**
+       * Active Favors
+       * @description XP favors active for this character until reset.
+       */
+      active_favors: components['schemas']['OfferingFavorSchema'][];
+    };
     /** CharacterStatsResponseSchema */
     CharacterStatsResponseSchema: {
       data: components['schemas']['CharacterStatsSchema'];
@@ -3689,6 +3854,30 @@ export interface components {
       /** @description Combat simulation results. */
       data: components['schemas']['CombatSimulationDataSchema'];
     };
+    /** CompleteOfferingDataSchema */
+    CompleteOfferingDataSchema: {
+      cooldown: components['schemas']['CooldownSchema'];
+      offering: components['schemas']['SeasonalOfferingSchema'];
+      reward: components['schemas']['OfferingRewardSchema'];
+      /**
+       * Favor Expires At
+       * Format: date-time
+       */
+      favor_expires_at: string;
+      character: components['schemas']['CharacterSchema'];
+    };
+    /** CompleteOfferingRequestSchema */
+    CompleteOfferingRequestSchema: {
+      /**
+       * Offering Id
+       * @description Offering identifier to complete.
+       */
+      offering_id: string;
+    };
+    /** CompleteOfferingResponseSchema */
+    CompleteOfferingResponseSchema: {
+      data: components['schemas']['CompleteOfferingDataSchema'];
+    };
     /**
      * ConditionOperator
      * @enum {string}
@@ -3784,6 +3973,38 @@ export interface components {
        * @default 1
        */
       quantity: number;
+    };
+    /** DailySeasonalOfferingsResponseSchema */
+    DailySeasonalOfferingsResponseSchema: {
+      data: components['schemas']['DailySeasonalOfferingsSchema'];
+    };
+    /** DailySeasonalOfferingsSchema */
+    DailySeasonalOfferingsSchema: {
+      /**
+       * Date
+       * Format: date
+       * @description UTC date of this rotation.
+       */
+      date: string;
+      /**
+       * Expires At
+       * Format: date-time
+       * @description Next daily reset at midnight UTC.
+       */
+      expires_at: string;
+      /**
+       * Skills
+       * @description Two skills selected for this rotation.
+       */
+      skills: string[];
+      /**
+       * Xp Reward Percent
+       * @description Percentage of the current level XP requirement granted on completion.
+       * @default 25
+       */
+      xp_reward_percent: number;
+      /** Offerings */
+      offerings: components['schemas']['SeasonalOfferingSchema'][];
     };
     /** DataPage[AccountAchievementSchema] */
     DataPage_AccountAchievementSchema_: {
@@ -3893,19 +4114,6 @@ export interface components {
     DataPage_RaidLeaderboardEntrySchema_: {
       /** Data */
       data: components['schemas']['RaidLeaderboardEntrySchema'][];
-      /** Total */
-      total: number;
-      /** Page */
-      page: number;
-      /** Size */
-      size: number;
-      /** Pages */
-      pages: number;
-    };
-    /** DataPage[SimpleItemSchema] */
-    DataPage_SimpleItemSchema_: {
-      /** Data */
-      data: components['schemas']['SimpleItemSchema'][];
       /** Total */
       total: number;
       /** Page */
@@ -5054,6 +5262,7 @@ export interface components {
       | 'rename'
       | 'transition'
       | 'claim_item'
+      | 'offering'
       | 'sandbox_give_gold'
       | 'sandbox_give_item'
       | 'sandbox_give_xp'
@@ -5086,6 +5295,7 @@ export interface components {
       | 'bank'
       | 'grand_exchange'
       | 'tasks_master'
+      | 'seasonal_altar'
       | 'npc'
       | 'raid';
     /**
@@ -5449,6 +5659,67 @@ export interface components {
       transaction: components['schemas']['NpcItemTransactionSchema'];
       /** @description Character details. */
       character: components['schemas']['CharacterSchema'];
+    };
+    /** OfferingFavorSchema */
+    OfferingFavorSchema: {
+      /**
+       * Target Type
+       * @description Activity receiving the XP favor.
+       * @enum {string}
+       */
+      target_type: 'monster' | 'resource' | 'craft';
+      /**
+       * Target Code
+       * @description Exact monster, resource node, or craft receiving the XP favor.
+       */
+      target_code: string;
+      /**
+       * Xp Multiplier
+       * @description XP multiplier active after accepting the offering.
+       * @default 1.5
+       */
+      xp_multiplier: number;
+      /**
+       * Drop Multiplier
+       * @description Item drop quantity multiplier. It is 1.5 for monster and resource favors, and 1.0 for craft favors.
+       * @default 1
+       */
+      drop_multiplier: number;
+    };
+    /** OfferingRequirementSchema */
+    OfferingRequirementSchema: {
+      /**
+       * Code
+       * @description Item code required by the offering.
+       */
+      code: string;
+      /**
+       * Quantity
+       * @description Required item quantity.
+       */
+      quantity: number;
+    };
+    /** OfferingRewardSchema */
+    OfferingRewardSchema: {
+      /**
+       * Category
+       * @enum {string}
+       */
+      category:
+        | 'combat'
+        | 'mining'
+        | 'woodcutting'
+        | 'fishing'
+        | 'alchemy'
+        | 'weaponcrafting'
+        | 'gearcrafting'
+        | 'jewelrycrafting'
+        | 'cooking';
+      /**
+       * Xp
+       * @description XP granted immediately.
+       */
+      xp: number;
     };
     /** PasswordResetConfirmSchema */
     PasswordResetConfirmSchema: {
@@ -6077,6 +6348,93 @@ export interface components {
        * @description Season rewards with required achievement points, sorted by points ascending.
        */
       rewards: components['schemas']['StatusSeasonRewardSchema'][];
+    };
+    /** SeasonalOfferingSchema */
+    SeasonalOfferingSchema: {
+      /**
+       * Id
+       * @description Daily offering identifier.
+       */
+      id: string;
+      /**
+       * Category
+       * @description Combat or skill category.
+       * @enum {string}
+       */
+      category:
+        | 'combat'
+        | 'mining'
+        | 'woodcutting'
+        | 'fishing'
+        | 'alchemy'
+        | 'weaponcrafting'
+        | 'gearcrafting'
+        | 'jewelrycrafting'
+        | 'cooking';
+      /**
+       * Type
+       * @description Offering source type.
+       * @enum {string}
+       */
+      type: 'monster' | 'resource' | 'craft';
+      /**
+       * Level Min
+       * @description Minimum level of the offering bracket.
+       */
+      level_min: number;
+      /**
+       * Level Max
+       * @description Maximum level of the offering bracket.
+       */
+      level_max: number;
+      requirement: components['schemas']['OfferingRequirementSchema'];
+      favor: components['schemas']['OfferingFavorSchema'];
+    };
+    /** SelectedOfferingSchema */
+    SelectedOfferingSchema: {
+      /** Offering Id */
+      offering_id: string;
+      /**
+       * Category
+       * @enum {string}
+       */
+      category:
+        | 'combat'
+        | 'mining'
+        | 'woodcutting'
+        | 'fishing'
+        | 'alchemy'
+        | 'weaponcrafting'
+        | 'gearcrafting'
+        | 'jewelrycrafting'
+        | 'cooking';
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: 'accepted' | 'completed';
+      /**
+       * Accepted At
+       * Format: date-time
+       */
+      accepted_at: string;
+      /**
+       * Completed At
+       * Format: date-time
+       */
+      completed_at?: string | null;
+      /**
+       * Reward Xp
+       * @default 0
+       */
+      reward_xp: number;
+      requirement: components['schemas']['OfferingRequirementSchema'];
+      favor: components['schemas']['OfferingFavorSchema'];
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
     };
     /** SimpleEffectSchema */
     SimpleEffectSchema: {
@@ -6845,7 +7203,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_SimpleItemSchema_'];
+          'application/json': components['schemas']['BankDataPage_SimpleItemSchema_'];
         };
       };
     };
@@ -8377,6 +8735,23 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['UseItemResponseSchema'];
+        };
+      };
+      /** @description Commercial features are disabled on sandbox and beta servers. */
+      403: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 403,
+           *         "message": "Commercial features are disabled on sandbox and beta servers."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
       /** @description Item not found. */
@@ -12913,6 +13288,416 @@ export interface operations {
       };
     };
   };
+  get_character_seasonal_offerings_my__name__offerings_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CharacterSeasonalOfferingsResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This seasonal offering is not available. */
+      575: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 575,
+           *         "message": "This seasonal offering is not available."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  action_accept_seasonal_offering_my__name__action_offering_accept_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AcceptOfferingRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AcceptOfferingResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character has already completed an offering in this category today. */
+      574: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 574,
+           *         "message": "The character has already completed an offering in this category today."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This seasonal offering is not available. */
+      575: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 575,
+           *         "message": "This seasonal offering is not available."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character has already selected an offering in this category today. */
+      576: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 576,
+           *         "message": "The character has already selected an offering in this category today."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Seasonal Altar not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 598,
+           *         "message": "Seasonal Altar not found on this map."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  action_complete_seasonal_offering_my__name__action_offering_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CompleteOfferingRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CompleteOfferingResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Missing required item(s). */
+      478: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 478,
+           *         "message": "Missing required item(s)."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character has already completed an offering in this category today. */
+      574: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 574,
+           *         "message": "The character has already completed an offering in this category today."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This seasonal offering is not available. */
+      575: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 575,
+           *         "message": "This seasonal offering is not available."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character must accept this seasonal offering first. */
+      577: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 577,
+           *         "message": "The character must accept this seasonal offering first."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Seasonal Altar not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 598,
+           *         "message": "Seasonal Altar not found on this map."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
   get_all_characters_logs_my_logs_get: {
     parameters: {
       query?: {
@@ -13637,6 +14422,43 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['StaticDataPage_SeasonRewardSchema_'];
+        };
+      };
+    };
+  };
+  get_daily_seasonal_offerings_seasonal_offerings_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DailySeasonalOfferingsResponseSchema'];
+        };
+      };
+      /** @description This seasonal offering is not available. */
+      575: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 575,
+           *         "message": "This seasonal offering is not available."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
     };

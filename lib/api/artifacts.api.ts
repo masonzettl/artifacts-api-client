@@ -24,6 +24,7 @@ import { ArtifactsSeasonRewardsApi } from './artifacts-season-rewards.api';
 import { ArtifactsRaidsApi } from './artifacts-raids.api';
 import { ArtifactsGemsShopApi } from './artifacts-gems-shop.api';
 import { ArtifactsGameAssistantApi } from './artifacts-game-assistant.api';
+import { ArtifactsSeasonalOfferingsApi } from './artifacts-seasonal-offerings.api';
 
 export class ArtifactsApi {
   public readonly myAccount: ArtifactsMyAccountApi;
@@ -33,6 +34,7 @@ export class ArtifactsApi {
   public readonly badges: ArtifactsBadgesApi;
   public readonly skins: ArtifactsSkinsApi;
   public readonly seasonRewards: ArtifactsSeasonRewardsApi;
+  public readonly seasonOfferings: ArtifactsSeasonalOfferingsApi;
   public readonly characters: ArtifactsCharactersApi;
   public readonly effects: ArtifactsEffectsApi;
   public readonly events: ArtifactsEventsApi;
@@ -58,6 +60,7 @@ export class ArtifactsApi {
     this.badges = new ArtifactsBadgesApi(httpClient);
     this.skins = new ArtifactsSkinsApi(httpClient);
     this.seasonRewards = new ArtifactsSeasonRewardsApi(httpClient);
+    this.seasonOfferings = new ArtifactsSeasonalOfferingsApi(httpClient);
     this.characters = new ArtifactsCharactersApi(httpClient);
     this.effects = new ArtifactsEffectsApi(httpClient);
     this.events = new ArtifactsEventsApi(httpClient);
