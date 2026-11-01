@@ -62,6 +62,11 @@ import {
   ActionClaimPendingItemApiResult,
   ActionRenameApiBody,
   ActionRenameApiResult,
+  GetCharacterSeasonalOfferingsApiResult,
+  ActionAcceptSeasonalOfferingApiBody,
+  ActionAcceptSeasonalOfferingApiResult,
+  ActionCompleteSeasonalOfferingApiBody,
+  ActionCompleteSeasonalOfferingApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsMyCharactersApi {
@@ -406,6 +411,41 @@ export class ArtifactsMyCharactersApi {
       body,
       isSecure: true,
     });
+  }
+
+  /** Return today's offerings and completion state for one character. */
+  public getSeasonalOfferings(name: string): Promise<GetCharacterSeasonalOfferingsApiResult> {
+    return this.httpClient.get<GetCharacterSeasonalOfferingsApiResult>(`/my/${name}/offerings`, {
+      isSecure: true,
+    });
+  }
+
+  /** Accept one offering in a daily category and activate its favor. */
+  public acceptSeasonalOffering(
+    name: string,
+    body: ActionAcceptSeasonalOfferingApiBody,
+  ): Promise<ActionAcceptSeasonalOfferingApiResult> {
+    return this.httpClient.post<ActionAcceptSeasonalOfferingApiResult>(
+      `/my/${name}/action/offering/accept`,
+      {
+        body,
+        isSecure: true,
+      },
+    );
+  }
+
+  /** Complete a previously accepted offering and receive its XP reward. */
+  public completeSeasonalOffering(
+    name: string,
+    body: ActionCompleteSeasonalOfferingApiBody,
+  ): Promise<ActionCompleteSeasonalOfferingApiResult> {
+    return this.httpClient.post<ActionCompleteSeasonalOfferingApiResult>(
+      `/my/${name}/action/offering`,
+      {
+        body,
+        isSecure: true,
+      },
+    );
   }
 
   /** History of the last 5000 actions of all your characters. */
